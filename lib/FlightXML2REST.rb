@@ -8,10 +8,10 @@ end
 
 #AircraftType
 class AircraftTypeRequest
-  attr_accessor :type  
+  attr_accessor :type
   def initialize(type = nil)
     @type = type
-  end 
+  end
   def post
     "type=#@type"
   end
@@ -41,10 +41,10 @@ end
 
 #AirlineFlightInfo
 class AirlineFlightInfoRequest
-    attr_accessor :faFlightID  
+    attr_accessor :faFlightID
   def initialize(faFlightID = nil)
     @faFlightID = faFlightID
-  end 
+  end
   def post
     "faFlightID=#@faFlightID"
   end
@@ -78,40 +78,40 @@ class AirlineFlightInfoResults
 end
 
 class AirlineFlightInfoStruct
-    attr_accessor :bag_claim, 
-                  :codeshares, 
-                  :faFlightID, 
-                  :gate_dest, 
-                  :gate_orig, 
-                  :ident, 
-                  :meal_service, 
-                  :seats_cabin_business, 
-                  :seats_cabin_coach, 
-                  :seats_cabin_first, 
+    attr_accessor :bag_claim,
+                  :codeshares,
+                  :faFlightID,
+                  :gate_dest,
+                  :gate_orig,
+                  :ident,
+                  :meal_service,
+                  :seats_cabin_business,
+                  :seats_cabin_coach,
+                  :seats_cabin_first,
                   :tailnumber,
                   :terminal_dest,
                   :terminal_orig
-                  
-  def initialize (bag_claim = nil, 
-                  codeshares = [], 
-                  faFlightID = nil, 
-                  gate_dest = nil, 
-                  gate_orig = nil, 
-                  ident = nil, 
-                  meal_service = nil, 
+
+  def initialize (bag_claim = nil,
+                  codeshares = [],
+                  faFlightID = nil,
+                  gate_dest = nil,
+                  gate_orig = nil,
+                  ident = nil,
+                  meal_service = nil,
                   seats_cabin_business = nil,
                   seats_cabin_coach = nil,
                   seats_cabin_first = nil,
                   tailnumber = nil,
                   terminal_dest = nil,
                   terminal_orig = nil)
-    @bag_claim = bag_claim 
+    @bag_claim = bag_claim
     @codeshares = codeshares
-    @faFlightID = faFlightID 
-    @gate_dest = gate_dest 
+    @faFlightID = faFlightID
+    @gate_dest = gate_dest
     @gate_orig = gate_orig
     @ident = ident
-    @meal_service = meal_service 
+    @meal_service = meal_service
     @seats_cabin_business = seats_cabin_business
     @seats_cabin_coach = seats_cabin_coach
     @seats_cabin_first = seats_cabin_first
@@ -167,24 +167,24 @@ class AirlineFlightSchedulesResults
 end
 
 class AirlineFlightScheduleStruct
-  attr_accessor :actual_ident, 
-                :aircrafttype, 
-                :arrivaltime, 
-                :departuretime, 
-                :destination, 
-                :ident, 
-                :meal_service, 
-                :origin, 
-                :seats_cabin_business, 
+  attr_accessor :actual_ident,
+                :aircrafttype,
+                :arrivaltime,
+                :departuretime,
+                :destination,
+                :ident,
+                :meal_service,
+                :origin,
+                :seats_cabin_business,
                 :seats_cabin_coach,
                 :seats_cabin_first
-                
-  def initialize (actual_ident = nil, 
-                  aircrafttype = nil, 
-                  arrivaltime = nil, 
-                  departuretime = nil, 
-                  destination = nil, 
-                  ident = nil, 
+
+  def initialize (actual_ident = nil,
+                  aircrafttype = nil,
+                  arrivaltime = nil,
+                  departuretime = nil,
+                  destination = nil,
+                  ident = nil,
                   meal_service = nil,
                   origin = nil,
                   seats_cabin_business = nil,
@@ -216,10 +216,10 @@ end
 
 #AirlineInfoRequest
 class AirlineInfoRequest
-  attr_accessor :airlineCode 
+  attr_accessor :airlineCode
   def initialize(airlineCode = nil)
     @airlineCode = airlineCode
-  end 
+  end
   def post
     "airlineCode=#@airlineCode"
   end
@@ -261,12 +261,12 @@ end
 
 #AirlineInsight
 class AirlineInsightRequest
-  attr_accessor :destination, :origin, :reportType 
+  attr_accessor :destination, :origin, :reportType
   def initialize(destination = nil, origin = nil, reportType = nil)
     @destination = destination
     @origin = origin
     @reportType = reportType
-  end 
+  end
   def post
     "destination=#@destination&origin=#@origin&reportType=#@reportType"
   end
@@ -319,7 +319,7 @@ class AirlineInsightStruct
                 :total_passengers,
                 :total_payload,
                 :total_seats
-                
+
   def initialize (carrier = nil,
                   destination = nil,
                   fare_max = nil,
@@ -365,10 +365,10 @@ end
 
 #AirportInfo
 class AirportInfoRequest
-  attr_accessor :airportCode  
+  attr_accessor :airportCode
   def initialize(airportCode = nil)
     @airportCode = airportCode
-  end 
+  end
   def post
     "airportCode=#@airportCode"
   end
@@ -380,11 +380,11 @@ class AirportInfoResults
     begin
     rawAirportInfoResult = JSON.parse(airportInfoResult)
     airportInfoResult = rawAirportInfoResult['AirportInfoResult']
-    @airportInfoResult = AirportInfoStruct.new(airportInfoResult['latitude'], 
+    @airportInfoResult = AirportInfoStruct.new(airportInfoResult['latitude'],
                                                 airportInfoResult['location'],
                                                 airportInfoResult['longitude'],
                                                 airportInfoResult['name'],
-                                                airportInfoResult['timezone'],   
+                                                airportInfoResult['timezone'],
                                                 )
     rescue
         raise FlightAwareError.new(rawAirportInfoResult['error']).error
@@ -404,9 +404,9 @@ class AirportInfoStruct
 end
 
 #AllAirlines
-class AllAirlinesRequest  
+class AllAirlinesRequest
   def initialize()
-  end 
+  end
   def post
     ""
   end
@@ -436,9 +436,9 @@ class ArrayOfString
 end
 
 #AllAirports
-class AllAirportsRequest  
+class AllAirportsRequest
   def initialize()
-  end 
+  end
   def post
     ""
   end
@@ -462,13 +462,13 @@ end
 
 #Arrived
 class ArrivedRequest
-  attr_accessor :airport, :filter, :howMany, :offset 
+  attr_accessor :airport, :filter, :howMany, :offset
   def initialize(airport = nil, filter = nil, howMany = nil, offset = nil)
     @airport = airport
     @filter = filter
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "airport=#@airport&filter=#@filter&howMany=#@howMany&offset=#@offset"
   end
@@ -509,17 +509,17 @@ class ArrivalStruct
 end
 
 class ArrivalFlightStruct
-  attr_accessor :actualarrivaltime, 
-                :actualdeparturetime, 
-                :aircrafttype, 
-                :destination, 
-                :destinationCity, 
-                :destinationName, 
-                :ident, 
-                :origin, 
-                :originCity, 
+  attr_accessor :actualarrivaltime,
+                :actualdeparturetime,
+                :aircrafttype,
+                :destination,
+                :destinationCity,
+                :destinationName,
+                :ident,
+                :origin,
+                :originCity,
                 :originName
-                
+
   def initialize(actualarrivaltime = nil,
                  actualdeparturetime = nil,
                  aircrafttype = nil,
@@ -530,7 +530,7 @@ class ArrivalFlightStruct
                  origin = nil,
                  originCity = nil,
                  originName = nil
-                ) 
+                )
     @actualarrivaltime = actualarrivaltime
     @actualdeparturetime = actualdeparturetime
     @aircrafttype = aircrafttype
@@ -547,10 +547,10 @@ end
 
 #BlockIdentCheck
 class BlockIdentCheckRequest
-  attr_accessor :ident  
+  attr_accessor :ident
   def initialize(ident = nil)
     @ident = ident
-  end 
+  end
   def post
     "ident=#@ident"
   end
@@ -575,7 +575,7 @@ class CountAirportOperationsRequest
   attr_accessor :airport
   def initialize(airport = nil)
     @airport = airport
-  end 
+  end
   def post
     "airport=#@airport"
   end
@@ -587,8 +587,8 @@ class CountAirportOperationsResults
     begin
       rawCountAirportOperationsResult = JSON.parse(countAirportOperationsResult)
       countAirportOperationsResult = rawCountAirportOperationsResult['CountAirportOperationsResult']
-      @countAirportOperationsResult = CountAirportOperationsStruct.new(countAirportOperationsResult['departed'], 
-                                                             countAirportOperationsResult['enroute'], 
+      @countAirportOperationsResult = CountAirportOperationsStruct.new(countAirportOperationsResult['departed'],
+                                                             countAirportOperationsResult['enroute'],
                                                              countAirportOperationsResult['scheduled_arrivals'],
                                                              countAirportOperationsResult['scheduled_departures']
                                                             )
@@ -613,7 +613,7 @@ class DecodeFlightRouteRequest
   attr_accessor :faFlightID
   def initialize(faFlightID = nil)
     @faFlightID = faFlightID
-  end 
+  end
   def post
     "faFlightID=#@faFlightID"
   end
@@ -665,7 +665,7 @@ class DecodeRouteRequest
     @destination = destination
     @origin = origin
     @route = route
-  end 
+  end
   def post
     "destination=#@destination&origin=#@origin&route=#@route"
   end
@@ -694,10 +694,10 @@ end
 
 #DeleteAlert
 class DeleteAlertRequest
-  attr_accessor :alert_id  
+  attr_accessor :alert_id
   def initialize(alert_id = nil)
     @alert_id = alert_id
-  end 
+  end
   def post
     "alert_id=#@alert_id"
   end
@@ -719,13 +719,13 @@ end
 
 #Departed
 class DepartedRequest
-  attr_accessor :airport, :filter, :howMany, :offset 
+  attr_accessor :airport, :filter, :howMany, :offset
   def initialize(airport = nil, filter = nil, howMany = nil, offset = nil)
     @airport = airport
     @filter = filter
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "airport=#@airport&filter=#@filter&howMany=#@howMany&offset=#@offset"
   end
@@ -767,18 +767,18 @@ class DepartureStruct
 end
 
 class DepartureFlightStruct
-  attr_accessor :actualarrivaltime, 
-                :actualdeparturetime, 
-                :aircrafttype, 
-                :destination, 
-                :destinationCity, 
+  attr_accessor :actualarrivaltime,
+                :actualdeparturetime,
+                :aircrafttype,
+                :destination,
+                :destinationCity,
                 :destinationName,
-                :estimatedarrivaltime, 
-                :ident, 
-                :origin, 
-                :originCity, 
+                :estimatedarrivaltime,
+                :ident,
+                :origin,
+                :originCity,
                 :originName
-                
+
   def initialize(actualarrivaltime = nil,
                  actualdeparturetime = nil,
                  aircrafttype = nil,
@@ -790,7 +790,7 @@ class DepartureFlightStruct
                  origin = nil,
                  originCity = nil,
                  originName = nil
-                ) 
+                )
     @actualarrivaltime = actualarrivaltime
     @actualdeparturetime = actualdeparturetime
     @aircrafttype = aircrafttype
@@ -808,13 +808,13 @@ end
 
 #Enroute
 class EnrouteRequest
-  attr_accessor :airport, :filter, :howMany, :offset 
+  attr_accessor :airport, :filter, :howMany, :offset
   def initialize(airport = nil, filter = nil, howMany = nil, offset = nil)
     @airport = airport
     @filter = filter
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "airport=#@airport&filter=#@filter&howMany=#@howMany&offset=#@offset"
   end
@@ -856,18 +856,18 @@ class EnrouteStruct
 end
 
 class EnrouteFlightStruct
-  attr_accessor :actualdeparturetime, 
-                :aircrafttype, 
-                :destination, 
-                :destinationCity, 
+  attr_accessor :actualdeparturetime,
+                :aircrafttype,
+                :destination,
+                :destinationCity,
                 :destinationName,
                 :estimatedarrivaltime,
-                :filed_departuretime, 
-                :ident, 
-                :origin, 
-                :originCity, 
+                :filed_departuretime,
+                :ident,
+                :origin,
+                :originCity,
                 :originName
-                
+
   def initialize(actualdeparturetime = nil,
                  aircrafttype = nil,
                  destination = nil,
@@ -879,7 +879,7 @@ class EnrouteFlightStruct
                  origin = nil,
                  originCity = nil,
                  originName = nil
-                ) 
+                )
     @actualdeparturetime = actualdeparturetime
     @aircrafttype = aircrafttype
     @destination = destination
@@ -896,12 +896,12 @@ end
 
 #FleetArrived
 class FleetArrivedRequest
-  attr_accessor :fleet, :howMany, :offset 
+  attr_accessor :fleet, :howMany, :offset
   def initialize(fleet = nil, howMany = nil, offset = nil)
     @fleet = fleet
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "fleet=#@fleet&howMany=#@howMany&offset=#@offset"
   end
@@ -936,12 +936,12 @@ end
 
 #FleetScheduled
 class FleetScheduledRequest
-  attr_accessor :fleet, :howMany, :offset 
+  attr_accessor :fleet, :howMany, :offset
   def initialize(fleet = nil, howMany = nil, offset = nil)
     @fleet = fleet
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "fleet=#@fleet&howMany=#@howMany&offset=#@offset"
   end
@@ -982,17 +982,17 @@ class ScheduledStruct
 end
 
 class ScheduledFlightStruct
-  attr_accessor :aircrafttype, 
-                :destination, 
-                :destinationCity, 
+  attr_accessor :aircrafttype,
+                :destination,
+                :destinationCity,
                 :destinationName,
                 :estimatedarrivaltime,
-                :filed_departuretime, 
-                :ident, 
-                :origin, 
-                :originCity, 
+                :filed_departuretime,
+                :ident,
+                :origin,
+                :originCity,
                 :originName
-                
+
   def initialize(aircrafttype = nil,
                  destination = nil,
                  destinationCity = nil,
@@ -1003,7 +1003,7 @@ class ScheduledFlightStruct
                  origin = nil,
                  originCity = nil,
                  originName = nil
-                ) 
+                )
     @aircrafttype = aircrafttype
     @destination = destination
     @destinationCity = destinationCity
@@ -1024,7 +1024,7 @@ class FlightInfoRequest
   def initialize(howMany = nil, ident = nil)
     @howMany = howMany
     @ident = ident
-  end 
+  end
   def post
     "howMany=#@howMany&ident=#@ident"
   end
@@ -1093,7 +1093,7 @@ class FlightStruct
                 :originCity,
                 :originName,
                 :route
-                
+
   def initialize (actualarrivaltime = nil,
                   actualdeparturetime = nil,
                   aircrafttype = nil,
@@ -1144,7 +1144,7 @@ class FlightInfoExRequest
     @howMany = howMany
     @ident = ident
     @offset = offset
-  end 
+  end
   def post
     "howMany=#@howMany&ident=#@ident&offset=#@offset"
   end
@@ -1215,7 +1215,7 @@ class FlightExStruct
                 :originCity,
                 :originName,
                 :route
-                
+
   def initialize (actualarrivaltime = nil,
                   actualdeparturetime = nil,
                   aircrafttype = nil,
@@ -1264,7 +1264,7 @@ end
 #GetAlerts
 class GetAlertsRequest
   def initialize()
-  end 
+  end
   def post
     ""
   end
@@ -1336,7 +1336,7 @@ class FlightAlertEntry
                 :origin,
                 :type,
                 :user_ident
-                
+
   def initialize (aircrafttype = nil,
                   alert_changed = nil,
                   alert_created = nil,
@@ -1387,11 +1387,11 @@ end
 
 #GetFlightID
 class GetFlightIDRequest
-  attr_accessor :departureTime, :ident 
+  attr_accessor :departureTime, :ident
   def initialize(departureTime = nil, ident = nil)
     @departureTime = departureTime
     @ident = ident
-  end 
+  end
   def post
     "departureTime=#@departureTime&ident=#@ident"
   end
@@ -1420,7 +1420,7 @@ class GetHistoricalTrackRequest
   attr_accessor :faFlightID
   def initialize(faFlightID = nil)
     @faFlightID = faFlightID
-  end 
+  end
   def post
     "faFlightID=#@faFlightID"
   end
@@ -1437,13 +1437,13 @@ class GetHistoricalTrackResults
         @getHistoricalTrackResult.data << TrackStruct.new(data['altitude'],
                                        data['altitudeChange'],
                                        data['altitudeStatus'],
-                                       data['groundsped'],
+                                       data['groundspeed'],
                                        data['latitude'],
                                        data['longitude'],
                                        data['timestamp'],
                                        data['updateType']
                                       )
-  
+
       end
     rescue
         raise FlightAwareError.new(rawGetHistoricalTrackResult['error']).error
@@ -1467,7 +1467,7 @@ class TrackStruct
                 :longitude,
                 :timestamp,
                 :updateType
-                
+
   def initialize (altitude = nil,
                   altitudeChange = nil,
                   altitudeStatus = nil,
@@ -1494,7 +1494,7 @@ class GetLastTrackRequest
   attr_accessor :ident
   def initialize(ident = nil)
     @ident = ident
-  end 
+  end
   def post
     "ident=#@ident"
   end
@@ -1511,13 +1511,13 @@ class GetLastTrackResults
         @getLastTrackResult.data << TrackStruct.new(data['altitude'],
                                        data['altitudeChange'],
                                        data['altitudeStatus'],
-                                       data['groundsped'],
+                                       data['groundspeed'],
                                        data['latitude'],
                                        data['longitude'],
                                        data['timestamp'],
                                        data['updateType']
                                       )
-  
+
       end
     rescue
         raise FlightAwareError.new(rawGetLastTrackResult['error']).error
@@ -1531,7 +1531,7 @@ class InboundFlightInfoRequest
   attr_accessor :faFlightID
   def initialize(faFlightID = nil)
     @faFlightID = faFlightID
-  end 
+  end
   def post
     "faFlightID=#@faFlightID"
   end
@@ -1576,7 +1576,7 @@ class InFlightInfoRequest
   attr_accessor :ident
   def initialize(ident = nil)
     @ident = ident
-  end 
+  end
   def post
     "ident=#@ident"
   end
@@ -1644,7 +1644,7 @@ class InFlightAircraftStruct
                 :type,
                 :updateType,
                 :waypoints
-                
+
   def initialize (altitude = nil,
                   altitudeChange = nil,
                   altitudeStatus = nil,
@@ -1706,7 +1706,7 @@ class LatLongsToDistanceRequest
     @lat2 = lat2
     @lon1 = lon1
     @lon2 = lon2
-  end 
+  end
   def post
     "lat1=#@lat1&lat2=#@lat2&lon1=#@lon1&lon2=#@lon2"
   end
@@ -1734,7 +1734,7 @@ class LatLongsToHeadingRequest
     @lat2 = lat2
     @lon1 = lon1
     @lon2 = lon2
-  end 
+  end
   def post
     "lat1=#@lat1&lat2=#@lat2&lon1=#@lon1&lon2=#@lon2"
   end
@@ -1761,7 +1761,7 @@ class MapFlightRequest
     @ident = ident
     @mapHeight = mapHeight
     @mapWidth = mapWidth
-  end 
+  end
   def post
     "ident=#@ident&mapHeight=#@mapHeight&mapWidth=#@mapWidth"
   end
@@ -1783,24 +1783,24 @@ end
 
 #MapFlightEx
 class MapFlightExRequest
-  attr_accessor :airports_expand_view, 
-                :faFlightID, 
-                :latlon_box, 
-                :layer_off, 
-                :layer_on, 
-                :mapHeight, 
-                :mapWidth, 
-                :show_airports, 
+  attr_accessor :airports_expand_view,
+                :faFlightID,
+                :latlon_box,
+                :layer_off,
+                :layer_on,
+                :mapHeight,
+                :mapWidth,
+                :show_airports,
                 :show_data_blocks
-                
-  def initialize(airports_expand_view = nil, 
-                 faFlightID = nil, 
-                 latlon_box = [], 
-                 layer_off = [], 
-                 layer_on = [], 
-                 mapHeight = nil, 
-                 mapWidth = nil, 
-                 show_airports = nil, 
+
+  def initialize(airports_expand_view = nil,
+                 faFlightID = nil,
+                 latlon_box = [],
+                 layer_off = [],
+                 layer_on = [],
+                 mapHeight = nil,
+                 mapWidth = nil,
+                 show_airports = nil,
                  show_data_blocks = nil)
     @airports_expand_view = airports_expand_view
     @faFlightID = faFlightID
@@ -1811,21 +1811,21 @@ class MapFlightExRequest
     @mapWidth = mapWidth
     @show_airports = show_airports
     @show_data_blocks = show_data_blocks
-  end 
+  end
   def post
     #TODO Clean this up when the Rest-Client properly handles arrays
     latlon_box = ""
     @latlon_box.each { |v| latlon_box = latlon_box + "latlon_box=" + v.to_s + "&" }
     @latlon_box = latlon_box
-    
+
     layer_on = ""
     @layer_on.each { |v| layer_on = layer_on + "layer_on=" + v.to_s + "&" }
     @layer_on = layer_on
-    
+
     layer_off = ""
     @layer_off.each { |v| layer_off = layer_off + "layer_off=" + v.to_s + "&" }
     @layer_off = layer_off
-    
+
     output = "airports_expand_view=#@airports_expand_view&faFlightID=#@faFlightID&#{@latlon_box}#{@layer_off}#{@layer_on}" +
     "mapHeight=#@mapHeight&mapWidth=#@mapWidth&show_airports=#@show_airports&show_data_blocks=#@show_data_blocks"
     output
@@ -1851,7 +1851,7 @@ class MetarRequest
   attr_accessor :airport
   def initialize(airport = nil)
     @airport = airport
-  end 
+  end
   def post
     "airport=#@airport"
   end
@@ -1879,7 +1879,7 @@ class MetarExRequest
     @startTime = startTime
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "airport=#@airport&startTime=#@startTime&howMany=#@howMany&offset=#@offset"
   end
@@ -1910,7 +1910,7 @@ class MetarExResults
                                                 metar['wind_speed'],
                                                 metar['wind_speed_gust']
                                                )
-  
+
       end
     rescue
         raise FlightAwareError.new(rawMetarExResult['error']).error
@@ -1987,7 +1987,7 @@ class NTafRequest
   attr_accessor :airport
   def initialize(airport = nil)
     @airport = airport
-  end 
+  end
   def post
     "airport=#@airport"
   end
@@ -2025,7 +2025,7 @@ class RegisterAlertEndpointRequest
   def initialize(address = nil, format_type = "json/post")
     @address = address
     @format_type = format_type
-  end 
+  end
   def post
     "address=#@address&format_type=#@format_type"
   end
@@ -2051,7 +2051,7 @@ class RoutesBetweenAirportsRequest
   def initialize(destination = nil, origin = nil)
     @destination = destination
     @origin = origin
-  end 
+  end
   def post
     "destination=#@destination&origin=#@origin"
   end
@@ -2069,7 +2069,7 @@ class RoutesBetweenAirportsResults
                                                                               route['filedAltitude'],
                                                                               route['route']
                                                                              )
-  
+
       end
     rescue
         raise FlightAwareError.new(rawRoutesBetwenAirportsResult['error']).error
@@ -2105,7 +2105,7 @@ class RoutesBetweenAirportsExRequest
     @maxFileAge = maxFileAge
     @offset = offset
     @origin = origin
-  end 
+  end
   def post
     "destination=#@destination&howMany=#@howMany&maxDepartureAge=#@maxDepartureAge&maxFileAge=#@maxFileAge&offset=#@offset&origin=#@origin"
   end
@@ -2125,7 +2125,7 @@ class RoutesBetweenAirportsExResults
                                                                                  route['last_departuretime'],
                                                                                  route['route']
                                                                                 )
-  
+
       end
     rescue
         raise FlightAwareError.new(rawRoutesBetweenAirportsExResult['error']).error
@@ -2156,13 +2156,13 @@ end
 
 #Scheduled
 class ScheduledRequest
-  attr_accessor :airport, :filter, :howMany, :offset 
+  attr_accessor :airport, :filter, :howMany, :offset
   def initialize(airport = nil, filter = nil, howMany = nil, offset = nil)
     @airport = airport
     @filter = filter
     @howMany = howMany
     @offset = offset
-  end 
+  end
   def post
     "airport=#@airport&filter=#@filter&howMany=#@howMany&offset=#@offset"
   end
@@ -2203,17 +2203,17 @@ class ScheduledStruct
 end
 
 class ArrivalFlightStruct
-  attr_accessor :aircrafttype, 
-                :destination, 
-                :destinationCity, 
-                :destinationName, 
+  attr_accessor :aircrafttype,
+                :destination,
+                :destinationCity,
+                :destinationName,
                 :estimatedarrivaltime,
                 :filed_departuretime,
-                :ident, 
-                :origin, 
-                :originCity, 
+                :ident,
+                :origin,
+                :originCity,
                 :originName
-                
+
   def initialize(aircrafttype = nil,
                  destination = nil,
                  destinationCity = nil,
@@ -2224,7 +2224,7 @@ class ArrivalFlightStruct
                  origin = nil,
                  originCity = nil,
                  originName = nil
-                ) 
+                )
     @aircrafttype = aircrafttype
     @destination = destination
     @destinationCity = destinationCity
@@ -2241,12 +2241,12 @@ end
 
 #Search
 class SearchRequest
-  attr_accessor :howMany, :offset, :query 
+  attr_accessor :howMany, :offset, :query
   def initialize(howMany = nil, offset = nil, query = nil)
     @howMany = howMany
     @offset = offset
     @query = query
-  end 
+  end
   def post
     "howMany=#@howMany&offset=#@offset&query=#@query"
   end
@@ -2303,12 +2303,12 @@ end
 
 #SearchBirdseyeInFlight
 class SearchBirdseyeInFlightRequest
-  attr_accessor :howMany, :offset, :query 
+  attr_accessor :howMany, :offset, :query
   def initialize(howMany = nil, offset = nil, query = nil)
     @howMany = howMany
     @offset = offset
     @query = query
-  end 
+  end
   def post
     "howMany=#@howMany&offset=#@offset&query=#@query"
   end
@@ -2356,13 +2356,13 @@ end
 
 #SearchBirdseyePositions
 class SearchBirdseyePositionsRequest
-  attr_accessor :howMany, :offset, :query, :uniqueFlights 
+  attr_accessor :howMany, :offset, :query, :uniqueFlights
   def initialize(howMany = nil, offset = nil, query = nil, uniqueFlights = nil)
     @howMany = howMany
     @offset = offset
     @query = query
     @uniqueFlights = uniqueFlights
-  end 
+  end
   def post
     "howMany=#@howMany&offset=#@offset&query=#@query&uniqueFlights=#@uniqueFlights"
   end
@@ -2402,16 +2402,16 @@ class ArrayOfTrackExStruct
 end
 
 class TrackExStruct
-  attr_accessor :altitude, 
-                :altitudeChange, 
-                :altitudeStatus, 
-                :faFlightID, 
-                :groundspeed, 
-                :latitude, 
-                :longitude, 
-                :timestamp, 
+  attr_accessor :altitude,
+                :altitudeChange,
+                :altitudeStatus,
+                :faFlightID,
+                :groundspeed,
+                :latitude,
+                :longitude,
+                :timestamp,
                 :updateType
-                
+
   def initialize(altitude = nil,
                  altitudeChange = nil,
                  altitudeStatus = nil,
@@ -2440,7 +2440,7 @@ class SearchCountRequest
   attr_accessor :query
   def initialize(query = nil)
     @query = query
-  end 
+  end
   def post
     "query=#@query"
   end
@@ -2462,17 +2462,17 @@ end
 
 #SetAlert
 class SetAlertRequest
-  attr_accessor :aircrafttype, 
-                :alert_id, 
-                :channels, 
-                :date_end, 
-                :date_start, 
-                :destination, 
-                :enabled, 
-                :ident, 
-                :max_weekly, 
+  attr_accessor :aircrafttype,
+                :alert_id,
+                :channels,
+                :date_end,
+                :date_start,
+                :destination,
+                :enabled,
+                :ident,
+                :max_weekly,
                 :origin
-                
+
   def initialize(aircrafttype = nil,
                  alert_id = nil,
                  channels = nil,
@@ -2484,7 +2484,7 @@ class SetAlertRequest
                  max_weekly = nil,
                  origin = nil
                 )
-                
+
     @aircrafttype = aircrafttype
     @alert_id = alert_id
     @channels = channels
@@ -2495,9 +2495,9 @@ class SetAlertRequest
     @ident = ident
     @max_weekly = max_weekly
     @origin = origin
-  end 
+  end
   def post
-    "aircrafttype=#@aircrafttype&alert_id=#@alert_id&channels=#@channels&date_end=#@date_end&date_start=#@date_start" + 
+    "aircrafttype=#@aircrafttype&alert_id=#@alert_id&channels=#@channels&date_end=#@date_end&date_start=#@date_start" +
     "&destination=#@destination&enabled=#@enabled&ident=#@ident&max_weekly=#@max_weekly&origin=#@origin"
   end
 end
@@ -2518,10 +2518,10 @@ end
 
 #SetMaximumResultSize
 class SetMaximumResultSizeRequest
-  attr_accessor :max_size              
-  def initialize(max_size = nil)            
+  attr_accessor :max_size
+  def initialize(max_size = nil)
     @max_size = max_size
-  end 
+  end
   def post
     "max_size=#@max_size"
   end
@@ -2543,10 +2543,10 @@ end
 
 #Taf
 class TafRequest
-  attr_accessor :airport              
-  def initialize(airport = nil)            
+  attr_accessor :airport
+  def initialize(airport = nil)
     @airport = airport
-  end 
+  end
   def post
     "airport=#@airport"
   end
@@ -2568,10 +2568,10 @@ end
 
 #TailOwner
 class TailOwnerRequest
-  attr_accessor :ident              
-  def initialize(ident = nil)            
+  attr_accessor :ident
+  def initialize(ident = nil)
     @ident = ident
-  end 
+  end
   def post
     "ident=#@ident"
   end
@@ -2607,10 +2607,10 @@ end
 
 #ZipcodeInfo
 class ZipcodeInfoRequest
-  attr_accessor :zipcode              
-  def initialize(zipcode = nil)            
+  attr_accessor :zipcode
+  def initialize(zipcode = nil)
     @zipcode = zipcode
-  end 
+  end
   def post
     "zipcode=#@zipcode"
   end
@@ -2626,7 +2626,7 @@ class ZipcodeInfoResults
                                                  zipcodeInfoResult['county'],
                                                  zipcodeInfoResult['latitude'],
                                                  zipcodeInfoResult['longitude'],
-                                                 zipcodeInfoResult['state']    
+                                                 zipcodeInfoResult['state']
                                                 )
     rescue
         raise FlightAwareError.new(rawZipcodeInfoResult['error']).error
